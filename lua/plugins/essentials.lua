@@ -18,7 +18,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
       { "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
-      { "<leader>e-", "<cmd>Oil<cr>", desc = "Open Oil file explorer" },
+      { "<leader>oe", "<cmd>Oil<cr>", desc = "Open Oil file explorer" },
     },
     opts = {
       default_file_explorer = false,
@@ -67,10 +67,10 @@ return {
       use_default_keymaps = true,
       view_options = {
         show_hidden = false,
-        is_hidden_file = function(name, bufnr)
+        is_hidden_file = function(name)
           return vim.startswith(name, ".")
         end,
-        is_always_hidden = function(name, bufnr)
+        is_always_hidden = function(name)
           return false
         end,
         sort = {
@@ -125,9 +125,17 @@ return {
     cmd = "Spectre",
     keys = {
       { "<leader>sr", "<cmd>Spectre<cr>", desc = "Replace in files (Spectre)" },
-      { "<leader>sw", "<cmd>Spectre<cr><cmd>lua require('spectre').open_visual({select_word=true})<cr>", desc = "Search current word" },
+      {
+        "<leader>sw",
+        "<cmd>Spectre<cr><cmd>lua require('spectre').open_visual({select_word=true})<cr>",
+        desc = "Search current word",
+      },
       { "<leader>sw", "<esc><cmd>lua require('spectre').open_visual()<cr>", mode = "v", desc = "Search current word" },
-      { "<leader>sp", "<cmd>lua require('spectre').open_file_search({select_word=true})<cr>", desc = "Search on current file" },
+      {
+        "<leader>sp",
+        "<cmd>lua require('spectre').open_file_search({select_word=true})<cr>",
+        desc = "Search on current file",
+      },
     },
     opts = {
       color_devicons = true,
@@ -216,3 +224,4 @@ return {
     },
   },
 }
+
