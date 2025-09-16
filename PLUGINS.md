@@ -12,10 +12,10 @@ This document explains the purpose and usage of each plugin in your Neovim confi
 
 ### **Claude Code** (`greggh/claude-code.nvim`)
 - **Purpose**: Integrates Claude Code CLI directly in Neovim for AI-assisted coding
-- **Usage**: Toggle Claude Code terminal with `<leader>cc`
+- **Usage**: Toggle Claude Code terminal with `<leader>cct`
 - **Key Bindings**:
-  - `<leader>cc` - Toggle Claude Code window
-  - `<leader>ct` - Start new Claude Code task
+  - `<leader>cct` - Toggle Claude Code window
+  - `<leader>ccn` - Start new Claude Code task
 - **Note**: Auto-reloads files when Claude makes changes
 
 ### **TS Error Translator** (`dmmulroy/ts-error-translator.nvim`)
@@ -160,13 +160,13 @@ This document explains the purpose and usage of each plugin in your Neovim confi
 3. **Use Oil** (`-`) for quick file operations
 4. **Use Spectre** for project-wide refactoring
 5. **Enable Codeium** with `:Codeium Auth` for AI completions
-6. **Toggle Claude Code** with `<leader>cc` for AI assistance
+6. **Toggle Claude Code** with `<leader>cct` for AI assistance
 
 ## Quick Reference
 
 | Category | Plugin | Primary Keybinding | Purpose |
 |----------|--------|-------------------|----------|
-| AI | Claude Code | `<leader>cc` | AI coding assistant |
+| AI | Claude Code | `<leader>cct` | AI coding assistant |
 | AI | Codeium | Auto | Inline completions |
 | Navigation | Harpoon | `<leader>1-5` | Quick file switching |
 | Files | Oil | `-` | File management |
