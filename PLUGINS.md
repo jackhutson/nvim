@@ -116,6 +116,13 @@ This document explains the purpose and usage of each plugin in your Neovim confi
   - `<leader>hr` - Reset hunk
   - `<leader>hp` - Preview hunk
 
+### **Fugitive + Rhubarb** (Built into LazyVim)
+- **Purpose**: Git integration and GitHub/remote links
+- **Key Bindings**:
+  - `<leader>gB` - Open permalink for current line/selection in browser
+  - `<leader>gy` - Copy permalink for current line/selection to clipboard
+- **Tip**: Use visual mode before `<leader>gB`/`<leader>gy` to generate range links
+
 ## Note Taking
 
 ### **Obsidian** (`epwalsh/obsidian.nvim`)
