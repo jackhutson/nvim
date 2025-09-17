@@ -22,11 +22,6 @@ return {
         mdx = { "prettier" },
       })
 
-      -- Ensure format on save is enabled and fast; fall back to LSP if needed
-      opts.format_on_save = opts.format_on_save or {}
-      opts.format_on_save.timeout_ms = opts.format_on_save.timeout_ms or 500
-      opts.format_on_save.lsp_fallback = true
-
       -- Formatter fine-tuning: prefer local project binaries and correct cwd
       opts.formatters = vim.tbl_deep_extend("force", opts.formatters or {}, {
         eslint_d = {
