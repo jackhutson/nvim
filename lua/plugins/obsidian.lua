@@ -27,10 +27,10 @@ return {
       },
     },
 
-    notes_subdir = "notes",
+    notes_subdir = "2 Areas/Notes",
 
     daily_notes = {
-      folder = "dailies",
+      folder = "Daily",
       date_format = "%Y-%m-%d",
       alias_format = "%B %-d, %Y",
       template = nil,
@@ -133,4 +133,3 @@ return {
     },
   },
 }
-
