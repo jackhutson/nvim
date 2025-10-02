@@ -15,7 +15,7 @@ return {
   -- File explorer as a buffer
   {
     "stevearc/oil.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-mini/mini.icons" },
     keys = {
       { "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
       { "<leader>oe", "<cmd>Oil<cr>", desc = "Open Oil file explorer" },

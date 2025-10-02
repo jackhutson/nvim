@@ -11,7 +11,7 @@
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("markdown_diagnostics_quiet", { clear = true }),
   pattern = { "markdown", "mdx" },
-  callback = function(args)
-    vim.diagnostic.config({ virtual_text = false, underline = true, signs = true }, args.buf)
+  callback = function()
+    vim.diagnostic.config({ virtual_text = false, underline = true, signs = true })
   end,
 })

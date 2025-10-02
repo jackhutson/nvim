@@ -1,11 +1,25 @@
+-- Icons: mini.icons
+-- LazyVim uses mini.icons by default, but we're being explicit
+-- This ensures consistent icon display across neo-tree, telescope, etc.
+
 return {
   {
-    "nvim-tree/nvim-web-devicons",
+    "nvim-mini/mini.icons",
     lazy = true,
     opts = {
-      color_icons = true,
-      default = true,
-      -- Use default icon glyphs; Catppuccin plugin already provides colors/highlights
+      file = {
+        [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
+        ["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
+      },
+      filetype = {
+        dotenv = { glyph = "", hl = "MiniIconsYellow" },
+      },
     },
+    init = function()
+      package.preload["nvim-web-devicons"] = function()
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
+    end,
   },
 }
