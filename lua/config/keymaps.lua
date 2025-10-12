@@ -25,3 +25,6 @@ map("v", "K", ":m '<-2<cr>gv=gv", { desc = "Move line up" })
 
 -- Paste without yanking in visual mode
 map("x", "<leader>p", [["_dP]], { desc = "Paste without yank" })
+
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
