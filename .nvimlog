@@ -1,1 +1,11 @@
 WRN 2025-10-01T22:11:13.897 ?.10458    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/6wBlKH/nvim.10458.0
+WRN 2025-10-09T21:38:16.364 ?.81616    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/nQqlio/nvim.81616.0
+WRN 2025-10-09T21:38:20.700 ?.81627    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/gGIapq/nvim.81627.0
+WRN 2025-10-09T21:40:42.079 ?.81950    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/QaXaoV/nvim.81950.0
+WRN 2025-10-09T21:40:45.612 ?.81953    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/lGUk9V/nvim.81953.0
+WRN 2025-10-09T21:40:53.992 ?.81982    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/nw8XDK/nvim.81982.0
+WRN 2025-10-09T21:40:57.802 ?.81993    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/I58MvJ/nvim.81993.0
+WRN 2025-10-09T21:41:00.148 ?.81996    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/lLI5zU/nvim.81996.0
+WRN 2025-10-09T21:41:03.605 ?.82009    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/m5nipj/nvim.82009.0
+WRN 2025-10-09T21:41:06.503 ?.82012    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/Ppj194/nvim.82012.0
+WRN 2025-10-09T21:41:08.917 ?.82025    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/UH0Duo/nvim.82025.0
