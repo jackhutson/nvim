@@ -2,26 +2,12 @@
 
 This document explains the purpose and usage of each plugin in your Neovim configuration.
 
-## AI & Code Assistance
-
-### **Codeium** (LazyVim Extra)
-- **Purpose**: Free AI-powered code completions similar to GitHub Copilot
-- **Usage**: Completions appear automatically as you type in the completion menu
-- **Key Bindings**: Accept suggestions with Tab, navigate with arrow keys
-- **Note**: Requires authentication on first use with `:Codeium Auth`
-
-### **Claude Code** (`greggh/claude-code.nvim`)
-- **Purpose**: Integrates Claude Code CLI directly in Neovim for AI-assisted coding
-- **Usage**: Toggle Claude Code terminal with `<leader>cct`
-- **Key Bindings**:
-  - `<leader>cct` - Toggle Claude Code window
-  - `<leader>ccn` - Start new Claude Code task
-- **Note**: Auto-reloads files when Claude makes changes
+## Diagnostics & Language Tools
 
 ### **TS Error Translator** (`dmmulroy/ts-error-translator.nvim`)
 - **Purpose**: Translates cryptic TypeScript errors into plain English
-- **Usage**: Automatically translates errors in diagnostics window
-- **When to Use**: When working with complex TypeScript types and generics
+- **Usage**: Automatically rewrites diagnostics as they’re displayed
+- **When to Use**: Working with complex TypeScript types and generics
 
 ## Navigation & File Management
 

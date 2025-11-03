@@ -9,3 +9,4 @@ WRN 2025-10-09T21:41:00.148 ?.81996    server_start:193: Failed to start server:
 WRN 2025-10-09T21:41:03.605 ?.82009    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/m5nipj/nvim.82009.0
 WRN 2025-10-09T21:41:06.503 ?.82012    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/Ppj194/nvim.82012.0
 WRN 2025-10-09T21:41:08.917 ?.82025    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/UH0Duo/nvim.82025.0
+WRN 2025-10-30T08:55:49.350 ?.99945    server_start:193: Failed to start server: operation not permitted: /var/folders/db/k12y_yhd44l8rlmmwwy1hxbw0000gn/T/nvim.jackhutson/8E2uiq/nvim.99945.0

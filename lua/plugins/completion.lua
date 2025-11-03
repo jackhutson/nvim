@@ -21,8 +21,6 @@ return {
         nerd_font_variant = "mono",
       },
 
-      -- Sources are automatically configured by LazyVim's Copilot extra
-      -- Default order will be: LSP > Copilot > Snippets > Path
     },
   },
 }
