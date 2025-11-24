@@ -30,4 +30,4 @@ opt.undolevels = 10000
 
 -- LazyVim-specific settings
 vim.g.autoformat = true -- Enable format on save (toggle with <leader>uf)
-vim.g.lazyvim_picker = "telescope" -- Use telescope (default)
+vim.g.lazyvim_picker = "snacks" -- Use Snacks picker instead of telescope

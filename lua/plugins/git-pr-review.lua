@@ -66,6 +66,19 @@ return {
           vim.api.nvim_buf_set_option(bufnr, "wrap", false)
           vim.api.nvim_buf_set_option(bufnr, "list", false)
           vim.api.nvim_buf_set_option(bufnr, "colorcolumn", "")
+
+          -- Register which-key descriptions for merge conflict navigation
+          local ok, wk = pcall(require, "which-key")
+          if ok then
+            wk.add({
+              { "]x", desc = "Next conflict", buffer = bufnr },
+              { "[x", desc = "Previous conflict", buffer = bufnr },
+              { "<leader>co", desc = "Choose ours (current)", buffer = bufnr },
+              { "<leader>ct", desc = "Choose theirs (incoming)", buffer = bufnr },
+              { "<leader>cb", desc = "Choose both", buffer = bufnr },
+              { "<leader>cn", desc = "Choose none", buffer = bufnr },
+            })
+          end
         end,
       },
     },

@@ -6,12 +6,26 @@ return {
       opts = opts or {}
       local util = require("conform.util")
 
-      -- Prefer eslint_d for JS/TS; fallback to Prettier. Use Prettier for Markdown/MDX.
+      -- Define ESLint config files once for reuse
+      local eslint_config_files = {
+        "eslint.config.js",
+        "eslint.config.mjs",
+        "eslint.config.cjs",
+        ".eslintrc",
+        ".eslintrc.js",
+        ".eslintrc.cjs",
+        ".eslintrc.json",
+        ".eslintrc.yaml",
+        ".eslintrc.yml",
+      }
+
+      -- Formatters by filetype: use stop_after_first for conditional selection
+      -- For JS/TS: tries eslint_d -> prettier (stops at first with valid condition)
       opts.formatters_by_ft = vim.tbl_deep_extend("force", opts.formatters_by_ft or {}, {
-        javascript = { { "eslint_d", "eslint" }, "prettier" },
-        javascriptreact = { { "eslint_d", "eslint" }, "prettier" },
-        typescript = { { "eslint_d", "eslint" }, "prettier" },
-        typescriptreact = { { "eslint_d", "eslint" }, "prettier" },
+        javascript = { "eslint_d", "prettier", stop_after_first = true },
+        javascriptreact = { "eslint_d", "prettier", stop_after_first = true },
+        typescript = { "eslint_d", "prettier", stop_after_first = true },
+        typescriptreact = { "eslint_d", "prettier", stop_after_first = true },
         json = { "prettier" },
         jsonc = { "prettier" },
         yaml = { "prettier" },
@@ -26,49 +40,11 @@ return {
       opts.formatters = vim.tbl_deep_extend("force", opts.formatters or {}, {
         eslint_d = {
           prefer_local = "node_modules/.bin",
-          cwd = util.root_file({
-            "eslint.config.js",
-            "eslint.config.mjs",
-            "eslint.config.cjs",
-            ".eslintrc",
-            ".eslintrc.js",
-            ".eslintrc.cjs",
-            ".eslintrc.json",
-            "package.json",
-          }),
-          condition = util.root_file({
-            "eslint.config.js",
-            "eslint.config.mjs",
-            "eslint.config.cjs",
-            ".eslintrc",
-            ".eslintrc.js",
-            ".eslintrc.cjs",
-            ".eslintrc.json",
-            "package.json",
-          }),
-        },
-        eslint = {
-          prefer_local = "node_modules/.bin",
-          cwd = util.root_file({
-            "eslint.config.js",
-            "eslint.config.mjs",
-            "eslint.config.cjs",
-            ".eslintrc",
-            ".eslintrc.js",
-            ".eslintrc.cjs",
-            ".eslintrc.json",
-            "package.json",
-          }),
-          condition = util.root_file({
-            "eslint.config.js",
-            "eslint.config.mjs",
-            "eslint.config.cjs",
-            ".eslintrc",
-            ".eslintrc.js",
-            ".eslintrc.cjs",
-            ".eslintrc.json",
-            "package.json",
-          }),
+          cwd = util.root_file(vim.list_extend(vim.deepcopy(eslint_config_files), { "package.json" })),
+          -- Only run if ESLint config exists
+          condition = function(self, ctx)
+            return util.root_file(eslint_config_files)(self, ctx) ~= nil
+          end,
         },
         prettier = {
           prefer_local = "node_modules/.bin",
@@ -86,8 +62,16 @@ return {
             "prettier.config.mjs",
             "prettier.config.ts",
           }),
+          -- Only run if NO ESLint config exists (fallback formatter for JS/TS)
+          condition = function(self, ctx)
+            local has_eslint = util.root_file(eslint_config_files)(self, ctx)
+            return not has_eslint
+          end,
         },
       })
+
+      -- Note: Don't set opts.format_on_save here - LazyVim handles it automatically
+      -- Our conditional formatters_by_ft will be called by LazyVim's format-on-save
 
       return opts
     end,
