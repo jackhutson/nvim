@@ -5,6 +5,7 @@ return {
     opts.spec = opts.spec or {}
     vim.list_extend(opts.spec, {
       { "<leader>l", group = "lsp" },
+      { "<leader>t", group = "test" },
       { "<leader>y", group = "yank/copy" },
     })
     return opts

@@ -1,4 +1,8 @@
 return {
+  -- Disable unused LazyVim defaults
+  { "akinsho/bufferline.nvim", enabled = false },
+  { "folke/tokyonight.nvim", enabled = false },
+
   -- Undo tree visualization
   {
     "mbbill/undotree",
