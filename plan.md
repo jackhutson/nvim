@@ -16,7 +16,8 @@ workmux + Claude Code terminal workflow.
 - **Bufferline**: Disabled — not used
 - **Tokyonight**: Disabled — Catppuccin is the only theme
 - **Test runner**: Vitest (primary), Jest (legacy) via neotest-vitest adapter
-- **Neovim 0.12**: Not yet stable, targeting 0.11.x
+- **Neovim 0.12**: Released March 29, 2026 — target for nix-config update
+- **vim-tmux-navigator**: Removed — prefer consistent keybindings, no context-dependent behavior
 
 ---
 
@@ -36,7 +37,7 @@ workmux + Claude Code terminal workflow.
 - [x] Registered `<leader>t` group in which-key
 
 ### Phase 4: Tmux Integration
-- [x] Created `lua/plugins/tmux.lua` with `vim-tmux-navigator` (`<C-h/j/k/l>`)
+- [x] ~~Created `lua/plugins/tmux.lua`~~ — Removed: prefer consistent keybindings
 
 ### Phase 7: Format
 - [x] Ran `stylua lua/` to format all files
@@ -51,11 +52,9 @@ workmux + Claude Code terminal workflow.
 - [ ] Commit updated `lazy-lock.json`
 
 ### Neovim Version (nix-config repo)
-- [ ] Check: `nix eval nixpkgs#neovim-unwrapped.version` — must be >= 0.11.2
-- [ ] If outdated, update `flake.lock` or add neovim overlay
-
-### Tmux Plugin (nix-config repo)
-- [ ] Add `vim-tmux-navigator` tmux plugin to `programs.tmux.plugins` in `workstream.nix`
+- [ ] Update nixpkgs pin to get Neovim 0.12.0 (released March 29, 2026)
+- [ ] Check: `nix eval nixpkgs#neovim-unwrapped.version`
+- [ ] Watch for LazyVim v15.x with formal 0.12 support
 
 ### Smoke Test
 - [ ] Open a TypeScript file — verify LSP, completion, formatting
