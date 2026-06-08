@@ -5,6 +5,15 @@ return {
     opts = {
       picker = {
         enabled = true,
+        sources = {
+          -- Keep the explorer clean (hidden + gitignored files stay hidden by
+          -- default; toggle live with `H` / `I`), but ALWAYS surface `.claude`
+          -- and its contents -- even when gitignored. `include` globs take
+          -- precedence over `hidden`, `ignored`, and `exclude`.
+          explorer = {
+            include = { "**/.claude", "**/.claude/**" },
+          },
+        },
       },
       lazygit = {
         configure = true,
