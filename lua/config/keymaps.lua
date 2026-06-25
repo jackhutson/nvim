@@ -88,3 +88,35 @@ map("n", "<leader>lh", function()
 end, { desc = "Toggle Inlay Hints" })
 
 map("n", "<leader>lk", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+
+-- Review this branch's changes (vs origin/HEAD) in hunk, the terminal diff
+-- reviewer. Mirrors the `dv` shell function's three-dot range. hunk reads
+-- $EDITOR (= nvim), so pressing `e` on a file opens it back in nvim at the line.
+map("n", "<leader>gv", function()
+  local base = vim.trim(vim.fn.system("git rev-parse --abbrev-ref origin/HEAD 2>/dev/null"))
+  if base == "" or vim.v.shell_error ~= 0 then
+    base = "main"
+  end
+  Snacks.terminal("hunk diff " .. base .. "...HEAD")
+end, { desc = "Hunk: review branch vs origin/HEAD" })
+
+-- Render the current markdown file with glow in a floating pager. glow reads
+-- from disk, so write first to capture unsaved tweaks. The float is interactive
+-- (auto-closes when glow exits): scroll with j/k, press `q` to close and land
+-- back on the line you left. Loop: tweak -> <leader>mp -> read -> q -> repeat.
+map("n", "<leader>mp", function()
+  if vim.bo.modifiable and vim.api.nvim_buf_get_name(0) ~= "" then
+    vim.cmd("silent write")
+  end
+  Snacks.terminal("glow -p " .. vim.fn.shellescape(vim.fn.expand("%:p")), {
+    interactive = true, -- start_insert + auto_insert + auto_close
+    win = {
+      style = "float",
+      width = 0.8,
+      height = 0.85,
+      border = "rounded",
+      title = " 󰍔 " .. vim.fn.expand("%:t") .. " ",
+      title_pos = "center",
+    },
+  })
+end, { desc = "Markdown preview (glow)" })

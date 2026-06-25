@@ -1,5 +1,6 @@
 return {
-  -- Enhanced git diff viewing and file history
+  -- Diffview: 3-way merge-conflict resolution + file history.
+  -- Branch/working-tree diff review is handled by hunk (<leader>gv in keymaps.lua).
   {
     "sindrets/diffview.nvim",
     dependencies = {
@@ -13,7 +14,9 @@ return {
       "DiffviewToggleFiles",
     },
     keys = {
-      { "<leader>gD", "<cmd>DiffviewOpen<cr>", desc = "Open Diffview" },
+      -- :DiffviewOpen is the merge-tool entry (auto-detects in-progress merge/rebase);
+      -- branch review now goes through hunk (<leader>gv).
+      { "<leader>gD", "<cmd>DiffviewOpen<cr>", desc = "Diffview: conflicts / file diff" },
       { "<leader>gf", "<cmd>DiffviewFileHistory<cr>", desc = "File History" },
       { "<leader>gC", "<cmd>DiffviewClose<cr>", desc = "Close Diffview" },
     },
@@ -62,10 +65,11 @@ return {
       },
       hooks = {
         diff_buf_read = function(bufnr)
-          -- Apply catppuccin integration
-          vim.api.nvim_buf_set_option(bufnr, "wrap", false)
-          vim.api.nvim_buf_set_option(bufnr, "list", false)
-          vim.api.nvim_buf_set_option(bufnr, "colorcolumn", "")
+          -- wrap/list/colorcolumn are window-local; the diff window is current
+          -- here. vim.opt_local replaces the deprecated nvim_buf_set_option.
+          vim.opt_local.wrap = false
+          vim.opt_local.list = false
+          vim.opt_local.colorcolumn = ""
 
           -- Register which-key descriptions for merge conflict navigation
           local ok, wk = pcall(require, "which-key")
