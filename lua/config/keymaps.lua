@@ -105,17 +105,30 @@ end, { desc = "Hunk: review branch vs origin/HEAD" })
 -- (auto-closes when glow exits): scroll with j/k, press `q` to close and land
 -- back on the line you left. Loop: tweak -> <leader>mp -> read -> q -> repeat.
 map("n", "<leader>mp", function()
-  if vim.bo.modifiable and vim.api.nvim_buf_get_name(0) ~= "" then
-    vim.cmd("silent write")
+  local source = vim.api.nvim_buf_get_name(0)
+  if source ~= "" then
+    -- Real file on disk: persist unsaved tweaks, then render it.
+    if vim.bo.modifiable then
+      vim.cmd("silent write")
+    end
+  else
+    -- Unnamed buffer (glow has nothing to read): dump the live buffer to a
+    -- temp .md so the preview still works.
+    source = vim.fn.tempname() .. ".md"
+    vim.fn.writefile(vim.api.nvim_buf_get_lines(0, 0, -1, false), source)
   end
-  Snacks.terminal("glow -p " .. vim.fn.shellescape(vim.fn.expand("%:p")), {
+  local title = vim.fn.expand("%:t")
+  if title == "" then
+    title = "[No Name]"
+  end
+  Snacks.terminal("glow -p " .. vim.fn.shellescape(source), {
     interactive = true, -- start_insert + auto_insert + auto_close
     win = {
       style = "float",
       width = 0.8,
       height = 0.85,
       border = "rounded",
-      title = " 󰍔 " .. vim.fn.expand("%:t") .. " ",
+      title = " 󰍔 " .. title .. " ",
       title_pos = "center",
     },
   })
