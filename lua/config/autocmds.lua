@@ -10,11 +10,9 @@
 -- Disable spell checking in markdown files
 vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
--- Tame noisy diagnostics in Markdown buffers (keep signs/underlines, hide virtual text)
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("markdown_diagnostics_quiet", { clear = true }),
-  pattern = { "markdown", "mdx" },
-  callback = function()
-    vim.diagnostic.config({ virtual_text = false, underline = true, signs = true })
-  end,
-})
+-- NOTE: a FileType autocmd that calls vim.diagnostic.config() used to live here
+-- to hide virtual_text in markdown. It was removed because that call mutates the
+-- GLOBAL diagnostic config (no namespace/buffer scope), so opening one markdown
+-- buffer disabled virtual_text everywhere with no restore. Markdown linters are
+-- already disabled in lua/plugins/formatting.lua, so diagnostics stay quiet.
+-- Toggle virtual_text per-session with <leader>ud if needed.

@@ -4,8 +4,9 @@
 - `init.lua` bootstraps LazyVim and primes the runtime path.
 - `lua/config/{options,keymaps,autocmds,lazy}.lua` set core behavior and lazy.nvim bootstrap logic.
 - `lua/plugins/*.lua` stores feature-scoped specs that return tables consumed by lazy.nvim.
+- `lazyvim.json` is the single source of truth for enabled LazyVim extras (manage via `:LazyExtras`); LazyVim imports them automatically.
 - `lazy-lock.json` tracks plugin SHAs; update only after `:Lazy sync` when changes are deliberate.
-- `stylua.toml` and `PLUGINS.md` capture formatting rules and contributor-facing plugin notes.
+- `stylua.toml` captures formatting rules.
 
 ## Build, Test, and Development Commands
 - `nvim --headless "+Lazy! sync" +qa` installs dependencies and verifies plugin specs compile.
@@ -31,6 +32,6 @@
 - Request review once headless startup is clean and `stylua` passes locally.
 
 ## Agent Workflow Tips
-- Jump to config modules with Legendary (`:Config`, `:Plugins`, `:PluginDocs`).
-- Validate new leader bindings via `:Telescope keymaps` or `:map <leader>` to spot collisions early.
-- When adding plugins, mirror the domain-based layout in `lua/plugins/` and update `PLUGINS.md` if user-facing behavior shifts.
+- The picker is Snacks: search keymaps with `<leader>sk`, files with `<leader><space>`, grep with `<leader>/`.
+- Validate new leader bindings via `<leader>sk` or `:map <leader>` to spot collisions early.
+- When adding plugins, mirror the domain-based layout in `lua/plugins/`, and add LazyVim extras through `:LazyExtras` rather than hardcoding imports.
